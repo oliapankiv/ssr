@@ -17,7 +17,7 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -52,5 +52,6 @@ export const appConfig: ApplicationConfig = {
 		CourseResolver,
 		provideAnimations(),
 		provideHttpClient(withInterceptorsFromDi(), withFetch()),
+		provideClientHydration(withEventReplay()),
 	],
 };
