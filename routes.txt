@@ -1,3 +1,0 @@
-/courses/01
-/courses/02
-/courses/03
