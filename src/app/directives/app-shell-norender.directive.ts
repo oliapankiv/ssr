@@ -3,7 +3,6 @@ import { isPlatformServer } from '@angular/common';
 
 @Directive({
 	selector: '[appShellNoRender]',
-	standalone: false,
 })
 export class AppShellNoRenderDirective implements OnInit {
 	constructor(
@@ -12,7 +11,7 @@ export class AppShellNoRenderDirective implements OnInit {
 		private viewContainer: ViewContainerRef
 	) {}
 
-	ngOnInit() {
+	public ngOnInit() {
 		if (isPlatformServer(this.platformId)) {
 			this.viewContainer.clear();
 		} else {

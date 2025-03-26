@@ -7,6 +7,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { CoursesService } from '../services/courses.service';
 
+import { AppShellNoRenderDirective } from '../directives/app-shell-norender.directive';
+
 import { Course } from '../model/course';
 import { Lesson } from '../model/lesson';
 
@@ -14,7 +16,7 @@ import { Lesson } from '../model/lesson';
 	selector: 'course',
 	templateUrl: './course.component.html',
 	styleUrls: ['./course.component.scss'],
-	imports: [NgIf, MatProgressSpinnerModule, MatTableModule],
+	imports: [NgIf, MatProgressSpinnerModule, MatTableModule, AppShellNoRenderDirective],
 })
 export class CourseComponent implements OnInit {
 	course: Course;
@@ -30,7 +32,7 @@ export class CourseComponent implements OnInit {
 		private meta: Meta
 	) {}
 
-	ngOnInit() {
+	public ngOnInit() {
 		this.course = this.route.snapshot.data['course'];
 
 		this.title.setTitle(this.course.description);
