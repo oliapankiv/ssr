@@ -11,15 +11,15 @@ export class CoursesService {
 
 	constructor(private http: HttpClient) {}
 
-	findCourseById(courseId: string): Observable<Course> {
+	public findCourseById(courseId: string): Observable<Course> {
 		return this.http.get<Course>(`${CoursesService.API_URL}/courses/${courseId}.json`);
 	}
 
-	findAllCourses(): Observable<Course[]> {
+	public findAllCourses(): Observable<Course[]> {
 		return this.http.get<Course[]>(`${CoursesService.API_URL}/courses.json`);
 	}
 
-	findAllCourseLessons(courseId: string): Observable<Lesson[]> {
+	public findAllCourseLessons(courseId: string): Observable<Lesson[]> {
 		return this.http.get<Lesson[]>(`${CoursesService.API_URL}/lessons/${courseId}.json`);
 	}
 }

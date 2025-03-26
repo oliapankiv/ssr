@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { NgFor } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
@@ -15,15 +15,12 @@ import { Course } from '../model/course';
 	styleUrls: ['./courses-card-list.component.scss'],
 	imports: [NgFor, MatCardModule, MatButtonModule, RouterLink],
 })
-export class CoursesCardListComponent implements OnInit {
-	@Input()
-	courses: Course[];
+export class CoursesCardListComponent {
+	@Input() public courses: Course[];
 
 	constructor(private dialog: MatDialog) {}
 
-	ngOnInit() {}
-
-	editCourse({ description, longDescription, category }: Course) {
+	public editCourse({ description, longDescription, category }: Course) {
 		const dialogConfig = new MatDialogConfig();
 
 		dialogConfig.disableClose = true;

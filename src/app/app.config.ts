@@ -17,13 +17,16 @@ import { MatSortModule } from '@angular/material/sort';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { BrowserModule, provideClientHydration, withEventReplay } from '@angular/platform-browser';
+import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 import { provideAnimations } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from './app-routing.module';
 
 import { CourseResolver } from './services/course.resolver';
 import { CoursesService } from './services/courses.service';
+
+import { AppShellNoRenderDirective } from './directives/app-shell-norender.directive';
+import { AppShellRenderDirective } from './directives/app-shell-render.directive';
 
 export const appConfig: ApplicationConfig = {
 	providers: [
@@ -46,12 +49,14 @@ export const appConfig: ApplicationConfig = {
 			AppRoutingModule,
 			MatSelectModule,
 			MatDatepickerModule,
-			ReactiveFormsModule
+			ReactiveFormsModule,
+			AppShellRenderDirective,
+			AppShellNoRenderDirective
 		),
 		CoursesService,
 		CourseResolver,
 		provideAnimations(),
 		provideHttpClient(withInterceptorsFromDi(), withFetch()),
-		provideClientHydration(withEventReplay()),
+		provideClientHydration(),
 	],
 };

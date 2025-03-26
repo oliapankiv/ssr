@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
 import { MatTabsModule } from '@angular/material/tabs';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 import { CoursesService } from '../services/courses.service';
 
@@ -17,11 +17,11 @@ import { Course } from '../model/course';
 	imports: [MatTabsModule, CoursesCardListComponent, AsyncPipe],
 })
 export class HomeComponent implements OnInit {
-	courses$: Observable<Course[]>;
+	public courses$: Observable<Course[]>;
 
 	constructor(private coursesService: CoursesService) {}
 
-	ngOnInit() {
+	public ngOnInit() {
 		this.courses$ = this.coursesService.findAllCourses().pipe(map(Object.values));
 	}
 }

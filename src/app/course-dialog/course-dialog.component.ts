@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatOptionModule } from '@angular/material/core';
@@ -31,9 +31,9 @@ import { Course } from '../model/course';
 		MatButtonModule,
 	],
 })
-export class CourseDialogComponent implements OnInit {
-	form: FormGroup;
-	description: string;
+export class CourseDialogComponent {
+	public form: FormGroup;
+	public description: string;
 
 	constructor(
 		private fb: FormBuilder,
@@ -42,20 +42,18 @@ export class CourseDialogComponent implements OnInit {
 	) {
 		this.description = description;
 
-		this.form = fb.group({
+		this.form = this.fb.group({
 			description: [description, Validators.required],
 			category: [category, Validators.required],
 			longDescription: [longDescription, Validators.required],
 		});
 	}
 
-	ngOnInit() {}
-
-	save() {
+	public save() {
 		this.dialogRef.close(this.form.value);
 	}
 
-	close() {
+	public close() {
 		this.dialogRef.close();
 	}
 }
